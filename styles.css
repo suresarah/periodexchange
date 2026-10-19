@@ -506,3 +506,11 @@ main > * + * { border-top: 1.5px solid var(--ink); }
   .helps-grid > article:first-child { border-top: 0; padding-top: 0; }
   .helps-grid > article:last-child { padding-bottom: 0; }
 }
+
+/* About on phones: the two photos sit side by side, smaller */
+@media (max-width: 900px) {
+  .two > .stack:first-child { grid-template-columns: 1fr 1fr; gap: 14px; align-items: center; }
+  .two > .stack:first-child .frame.oval { width: 100%; }
+  .two > .stack:first-child .frame.tall { aspect-ratio: 1 / 1; border-radius: 20px; }
+  .two > .stack:first-child .caption { grid-column: 1 / -1; margin-top: 0; }
+}
