@@ -31,15 +31,23 @@ if (form) form.addEventListener('submit', async (e) => {
   data.set('news', data.has('news') ? 'Yes' : 'No');
 
   btn.disabled = true; btn.textContent = 'Sending…';
+  note.hidden = false; note.textContent = 'Sending your message, this can take a few seconds…';
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 30000);
   try {
     const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
-      method: 'POST', body: data, headers: { Accept: 'application/json' }
+      method: 'POST', body: data, headers: { Accept: 'application/json' }, signal: ctrl.signal
     });
-    if (!res.ok) throw new Error(res.status);
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || String(json.success) === 'false') throw new Error(json.message || res.status);
     note.textContent = "Thanks! We'll be in touch soon.";
     form.reset();
-  } catch {
-    note.textContent = 'Something went wrong. Please email sarah@periodexchange.com directly.';
+  } catch (err) {
+    note.textContent = /activat/i.test(err.message)
+      ? 'This form is waiting to be activated. Check sarah@periodexchange.com for the activation email.'
+      : 'Something went wrong. Please email sarah@periodexchange.com directly.';
+  } finally {
+    clearTimeout(timer);
   }
   note.hidden = false;
   btn.disabled = false; btn.textContent = 'Submit';
