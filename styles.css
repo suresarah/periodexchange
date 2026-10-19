@@ -434,3 +434,12 @@ body, p, li, .prose, .index small, .contact-form input, .contact-form textarea {
   color: var(--ink); background: var(--c); border-bottom: 1.5px solid var(--ink);
 }
 @media (max-width: 900px) { .band > .band-static > .band-title { font-size: clamp(26px, 8vw, 44px); } }
+
+/* No drop shadows anywhere */
+.gutter-shadow { box-shadow: none !important; }
+
+/* Contact section on a light background (advertisers/business pages) */
+.contact-light .accent-pink { color: inherit; }
+.contact-light .form-note { color: var(--ink); }
+.contact-light .check input:checked { background: var(--ink); }
+.contact-light .contact-form input:focus, .contact-light .contact-form textarea:focus { box-shadow: 0 0 0 2px var(--ink); }
