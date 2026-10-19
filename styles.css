@@ -514,3 +514,7 @@ main > * + * { border-top: 1.5px solid var(--ink); }
   .two > .stack:first-child .frame.tall { aspect-ratio: 1 / 1; border-radius: 20px; }
   .two > .stack:first-child .caption { grid-column: 1 / -1; margin-top: 0; }
 }
+
+/* Inner pages: Home button in the header (also shown on phones) */
+.header-actions .pill-home { border-color: var(--cream); }
+@media (max-width: 900px) { .header-actions .pill-home { display: inline-flex; } }
