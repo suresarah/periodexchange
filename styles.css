@@ -482,3 +482,15 @@ main > * + * { border-top: 1.5px solid var(--ink); }
 @media (max-width: 900px) {
   .spread > .page + .page { border-left: 0; border-top: 1.5px solid var(--ink); }
 }
+
+/* Business page: text and pictures alternate in the benefit rows */
+.band-static .band-open { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+.band-static .band-open > .frame, .band-static .band-open > .art { aspect-ratio: 16 / 9; }
+.band-static .band-open.flip > :first-child { order: 2; }
+.band-static .band-open > .art { display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--ink); border-radius: 26px; background: var(--cream); overflow: hidden; }
+.band-static .band-open > .art img { height: 82%; width: auto; max-width: 80%; object-fit: contain; }
+@media (max-width: 900px) {
+  .band-static .band-open { grid-template-columns: 1fr; }
+  .band-static .band-open.flip > :first-child { order: 0; }
+}
+.band-static .prose { font-size: clamp(17px, 1.45vw, 21px); }
