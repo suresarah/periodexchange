@@ -471,3 +471,14 @@ body, p, li, .prose, .index small, .contact-form input, .contact-form textarea {
 .spread.balanced > .page > .page-body { gap: 0; }
 .spread.balanced .two.even .prose { font-size: clamp(16px, 1.25vw, 18px); }
 .spread.balanced .panel-art { aspect-ratio: 21 / 9; }
+
+/* Consistent black rules: one 1.5px ink line at every section edge and between facing halves */
+main > * + * { border-top: 1.5px solid var(--ink); }
+.bands { border-top: 0; }
+.bands > .band:last-child .band-open,
+.bands > .band:last-child .band-panel { border-bottom: 0; }
+.spread > .page + .page { border-left: 1.5px solid var(--ink); }
+.signoff a, .helps-grid .signoff a { border-bottom-width: 1.5px; }
+@media (max-width: 900px) {
+  .spread > .page + .page { border-left: 0; border-top: 1.5px solid var(--ink); }
+}
