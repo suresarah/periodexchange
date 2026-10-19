@@ -518,3 +518,9 @@ main > * + * { border-top: 1.5px solid var(--ink); }
 /* Inner pages: Home button in the header (also shown on phones) */
 .header-actions .pill-home { border-color: var(--cream); }
 @media (max-width: 900px) { .header-actions .pill-home { display: inline-flex; } }
+
+/* Footer links (LinkedIn + email) */
+.footer-links { display: inline-flex; align-items: center; gap: 22px; }
+.footer-links a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; }
+.footer-links a:hover { color: var(--cream); }
+@media (max-width: 900px) { .footer-links { flex-direction: column; gap: 10px; } }
