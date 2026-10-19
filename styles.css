@@ -494,3 +494,15 @@ main > * + * { border-top: 1.5px solid var(--ink); }
   .band-static .band-open.flip > :first-child { order: 0; }
 }
 .band-static .prose { font-size: clamp(17px, 1.45vw, 21px); }
+
+/* Who it helps on phones: same spacing for every item, line clear of the pictures */
+@media (max-width: 900px) {
+  .helps-grid { margin: 0; row-gap: 0; }
+  .helps-grid > article,
+  .helps-grid > article:first-child,
+  .helps-grid > article:last-child,
+  .helps-grid > article:nth-child(3n),
+  .helps-grid > article:nth-child(3n+1) { padding: 36px 0; border-left: 0; border-top: 1.5px solid var(--ink); }
+  .helps-grid > article:first-child { border-top: 0; padding-top: 0; }
+  .helps-grid > article:last-child { padding-bottom: 0; }
+}
