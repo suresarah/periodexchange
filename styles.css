@@ -159,6 +159,8 @@ img { display: block; max-width: 100%; height: auto; }
 .index li::before { content: counter(i); font: 800 13px/1 var(--chunky); }
 .index .pg { font-size: .8em; font-variant-numeric: tabular-nums; }
 .index small { display: block; font: 400 15px/1.35 var(--serif); margin-top: 2px; opacity: .85; }
+.index.plain li { grid-template-columns: 1fr; }
+.index.plain li::before { content: none; }
 
 /* ---------- Hero (home) ---------- */
 .hero { position: relative; overflow: hidden; background: var(--ink); color: var(--cream); text-align: center; padding: 64px 0 72px; }
