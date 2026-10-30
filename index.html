@@ -244,7 +244,7 @@
         <div class="band-panel">
 
     <!-- ============ CONTACT ============ -->
-    <!-- Submissions are emailed via FormSubmit (formsubmit.co). The first one triggers an activation email to this address. -->
+    <!-- Submissions are emailed to sarah@periodexchange.com via Web3Forms (web3forms.com), using the access key below. -->
     <section class="page bg-ink on-dark">
       
       <div class="page-body contact-grid">
@@ -254,10 +254,11 @@
           <img src="assets/buddies.webp" alt="" class="contact-buddies" />
         </div>
 
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/sarah@periodexchange.com" method="POST">
-          <input type="hidden" name="_subject" value="New Period Exchange inquiry" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="text" name="_honey" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="59888fce-a94a-423c-b815-287d5a131437" />
+          <input type="hidden" name="subject" value="New Period Exchange inquiry" />
+          <input type="hidden" name="from_name" value="Period Exchange website" />
+          <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <fieldset>
             <legend>Name</legend>
             <div class="field-row">

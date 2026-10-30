@@ -35,7 +35,7 @@ if (form) form.addEventListener('submit', async (e) => {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 30000);
   try {
-    const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+    const res = await fetch(form.action, {
       method: 'POST', body: data, headers: { Accept: 'application/json' }, signal: ctrl.signal
     });
     const json = await res.json().catch(() => ({}));
@@ -46,10 +46,8 @@ if (form) form.addEventListener('submit', async (e) => {
     // If the form service is down, hand the message to the visitor's email app so it isn't lost
     const body = `Name: ${data.get('first')} ${data.get('last')}\nEmail: ${data.get('email')}\nType: ${data.get('type')}\nNews and updates: ${data.get('news')}\n\n${data.get('message')}`;
     const mailto = `mailto:sarah@periodexchange.com?subject=${encodeURIComponent('Period Exchange inquiry')}&body=${encodeURIComponent(body)}`;
-    note.innerHTML = /activat/i.test(err.message)
-      ? 'This form is waiting to be activated. Check sarah@periodexchange.com for the activation email.'
-      : `Our form couldn't send that just now. <a href="${mailto}">Send it by email instead</a>. Your message is already filled in.`;
-    if (!/activat/i.test(err.message)) location.href = mailto;
+    note.innerHTML = `Our form couldn't send that just now. <a href="${mailto}">Send it by email instead</a>. Your message is already filled in.`;
+    location.href = mailto;
   } finally {
     clearTimeout(timer);
   }
