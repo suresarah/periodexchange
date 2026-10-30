@@ -43,9 +43,13 @@ if (form) form.addEventListener('submit', async (e) => {
     note.textContent = "Thanks! We'll be in touch soon.";
     form.reset();
   } catch (err) {
-    note.textContent = /activat/i.test(err.message)
+    // If the form service is down, hand the message to the visitor's email app so it isn't lost
+    const body = `Name: ${data.get('first')} ${data.get('last')}\nEmail: ${data.get('email')}\nType: ${data.get('type')}\nNews and updates: ${data.get('news')}\n\n${data.get('message')}`;
+    const mailto = `mailto:sarah@periodexchange.com?subject=${encodeURIComponent('Period Exchange inquiry')}&body=${encodeURIComponent(body)}`;
+    note.innerHTML = /activat/i.test(err.message)
       ? 'This form is waiting to be activated. Check sarah@periodexchange.com for the activation email.'
-      : 'Something went wrong. Please email sarah@periodexchange.com directly.';
+      : `Our form couldn't send that just now. <a href="${mailto}">Send it by email instead</a>. Your message is already filled in.`;
+    if (!/activat/i.test(err.message)) location.href = mailto;
   } finally {
     clearTimeout(timer);
   }
